@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "ouday.challenge.com.oudaychallenge"
+        minSdkVersion 24
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+
+}
+
+dependencies {
+    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    implementation 'com.android.support:multidex:1.0.2'
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.github.bumptech.glide:glide:3.+'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:support-v4:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation project(':app_repository')
+    implementation project(':retrofit_http_manager')
+    testImplementation 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.0'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile 'org.powermock:powermock-core:1.6.4'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.4'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.4'
+
+    // Espresso dependencies
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.0'
+    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:3.0.0'
+    androidTestCompile 'com.android.support.test.espresso:espresso-web:3.0.0'
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:3.0.0'
+    // Note that the below dependency is ONLY non-"androidTestCompile" because we
+    // are doing the ugly thing and mixing Idling Resource code with our app code.
+//    compile 'com.android.support.test.espresso:espresso-idling-resource:3.0.0'
+
+    // Tell our test APK to use the following v25.1.0 dependencies in order to avoid conflicts:
+    androidTestCompile 'com.android.support:support-v4:28.0.0'
+    androidTestCompile 'com.android.support:recyclerview-v7:28.0.0'
+    androidTestCompile 'com.android.support:appcompat-v7:28.0.0'
+    androidTestCompile 'com.android.support:design:28.0.0'
+
+}

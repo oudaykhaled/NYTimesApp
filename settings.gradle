@@ -1,0 +1,1 @@
+include ':app', ':app_repository', ':retrofit_http_manager'
